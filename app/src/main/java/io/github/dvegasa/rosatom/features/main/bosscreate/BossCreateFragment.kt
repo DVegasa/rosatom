@@ -20,6 +20,7 @@ import io.github.dvegasa.rosatom.R
 import kotlinx.android.synthetic.main.fragment_boss_create.*
 import kotlinx.android.synthetic.main.fragment_file_picker.view.*
 import kotlinx.android.synthetic.main.item_file.view.*
+import kotlinx.android.synthetic.main.item_human.view.*
 
 class BossCreateFragment : DialogFragment() {
 
@@ -55,7 +56,8 @@ class BossCreateFragment : DialogFragment() {
     var month: Int? = null
     var day: Int? = null
 
-    var filesList: ArrayList<String> = arrayListOf<String>()
+    var filesList: ArrayList<String> = arrayListOf()
+    var humanList: ArrayList<Human> = arrayListOf()
     @SuppressLint("SetTextI18n")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -83,6 +85,19 @@ class BossCreateFragment : DialogFragment() {
                     val x = LayoutInflater.from(requireContext()).inflate(R.layout.item_file, llFiles, false)
                     x.tv.text = s
                     llFiles.addView(x)
+                }
+            }).show(childFragmentManager, null)
+        }
+
+        tvChooseHuman.setOnClickListener {
+            HumanPickerFragment(object : HumanPickerFragment.Callback {
+                override fun picked(h: Human) {
+                    humanList.add(h)
+                    val x = LayoutInflater.from(requireContext()).inflate(R.layout.item_human, llHumans, false)
+                    x.ivAva.setImageResource(h.avaId)
+                    x.tvName.text = h.name
+                    x.tvPosition.text = h.position
+                    llHumans.addView(x)
                 }
             }).show(childFragmentManager, null)
         }

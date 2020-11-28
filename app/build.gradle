@@ -56,5 +56,5 @@ dependencies {
     // implementation 'com.github.adrielcafe:AndroidAudioConverter:0.0.8'
     implementation 'com.arthenica:mobile-ffmpeg-full:4.4'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
-
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
