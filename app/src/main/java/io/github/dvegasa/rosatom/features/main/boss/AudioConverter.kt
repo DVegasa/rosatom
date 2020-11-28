@@ -22,8 +22,8 @@ class AudioConverter {
         fun toYandexType(context: Context, file: File, callback: Callback) {
             val newFile = getNewFile(file)
             val command =
-                // "ffmpeg -i ${file.path} ${newFile.path}"
-                "-y -i ${file.path} -acodec pcm_s16le -f s16le -ac 1 -ar 16000 ${newFile.path}"
+                // "-y -i ${file.path} -acodec pcm_s16le -f s16le -ac 1 -ar 16000 ${newFile.path}" // без ошибок, но выход без звука
+                "-i ${file.path} -ac 2 -f wav ${newFile.path}"
 
                 // "-i ${file.path} ${newFile.path}"
 
