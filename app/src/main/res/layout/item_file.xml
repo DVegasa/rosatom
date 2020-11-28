@@ -7,4 +7,5 @@
         android:fontFamily="@font/gilroy_medium"
         android:textColor="@color/colorPrimary"
         android:textSize="15sp"
+        android:layout_marginBottom="12dp"
         tools:text="ГОСТ 15235-2017 “Детали для машиностроения из углерода”" />

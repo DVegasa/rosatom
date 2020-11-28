@@ -27,6 +27,7 @@ class FilePickerFragment(val cb: Callback) : DialogFragment() {
             x.tv.text = s
             x.setOnClickListener {
                 cb.picked(s)
+                dismiss()
             }
             v.ll.addView(x)
         }
