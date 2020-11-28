@@ -117,19 +117,39 @@
                     android:text="Файлы" />
 
             <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/llFiles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:dividerPadding="8dp"/>
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:text="ГОСТ 15235-2017 “Детали для машиностроения из углерода”"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="15sp" />
-            </LinearLayout>
+            <TextView
+                    android:layout_marginTop="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/circe_bold"
+                    android:lineSpacingMultiplier="0.75"
+                    android:text="Добавить файл"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/tvChooseFiles"/>
+
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#ECECEC" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/circe_medium"
+                    android:text="Исполнители" />
 
         </LinearLayout>
 

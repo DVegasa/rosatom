@@ -18,6 +18,8 @@ import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import io.github.dvegasa.rosatom.R
 import kotlinx.android.synthetic.main.fragment_boss_create.*
+import kotlinx.android.synthetic.main.fragment_file_picker.view.*
+import kotlinx.android.synthetic.main.item_file.view.*
 
 class BossCreateFragment : DialogFragment() {
 
@@ -52,6 +54,8 @@ class BossCreateFragment : DialogFragment() {
     var year: Int? = null
     var month: Int? = null
     var day: Int? = null
+
+    var filesList: ArrayList<String> = arrayListOf<String>()
     @SuppressLint("SetTextI18n")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -69,7 +73,18 @@ class BossCreateFragment : DialogFragment() {
                     tvChooseDateTime.text = "$day.$month.$year $hour:$min (изменить)"
                 }).show(childFragmentManager, null)
             }).show(childFragmentManager, null)
+        }
 
+
+        tvChooseFiles.setOnClickListener {
+            FilePickerFragment(object : FilePickerFragment.Callback {
+                override fun picked(s: String) {
+                    filesList.add(s)
+                    val x = LayoutInflater.from(requireContext()).inflate(R.layout.item_file, llFiles, false)
+                    x.tv.text = s
+                    llFiles.addView(x)
+                }
+            }).show(childFragmentManager, null)
         }
     }
 }
