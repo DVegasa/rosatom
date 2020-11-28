@@ -29,7 +29,10 @@ import okhttp3.Response
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.Collections.list
+import kotlin.collections.ArrayList
 
 class BossCreateFragment : DialogFragment() {
 
@@ -59,11 +62,11 @@ class BossCreateFragment : DialogFragment() {
         }
     }
 
-    var hour: Int? = null
-    var min: Int? = null
-    var year: Int? = null
-    var month: Int? = null
-    var day: Int? = null
+    var hour: String? = null
+    var min: String? = null
+    var year: String? = null
+    var month: String? = null
+    var day: String? = null
 
     var filesList: ArrayList<String> = arrayListOf()
     var humanList: ArrayList<Human> = arrayListOf()
@@ -72,13 +75,13 @@ class BossCreateFragment : DialogFragment() {
         super.onActivityCreated(savedInstanceState)
         tvChooseDateTime.setOnClickListener {
             MyDatePicker(DatePickerDialog.OnDateSetListener { datePicker: DatePicker, y: Int, m: Int, d: Int ->
-                year = y
-                month = m
-                day = d
+                year = if (y < 10) "0$y" else "$y"
+                month = if (m < 10) "0$m" else "$m"
+                day = if (d < 10) "0$d" else "$d"
 
                 MyTimePicker(TimePickerDialog.OnTimeSetListener { timepicker, h, mi ->
-                    hour = h
-                    min = mi
+                    hour = if (h < 10) "0$h" else "$h"
+                    min = if (mi < 10) "0$mi" else "$mi"
 
                     tvCaptionDeadline.visibility = View.VISIBLE
                     tvChooseDateTime.text = "$day.$month.$year $hour:$min (изменить)"
@@ -112,6 +115,11 @@ class BossCreateFragment : DialogFragment() {
         }
 
         btnCreateTask.setOnClickListener {
+            Log.d("ed__", "hour " + hour)
+            Log.d("ed__", "min " + min)
+            Log.d("ed__", "year " + year)
+            Log.d("ed__", "month " + month)
+            Log.d("ed__", "day " + day)
             val api = DanielApi.create()
 
             val workerIds = arrayListOf<Int>()
@@ -124,7 +132,9 @@ class BossCreateFragment : DialogFragment() {
                 linkeds.add(f)
             }
 
-            val dline: String = ""
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            sdf.format(Date())
+            val dline: String = "$year-$month-$day $hour:$min:00.000000"
 
             api.uploadTask(Task(
                 title = tvTitle.text.toString(),
