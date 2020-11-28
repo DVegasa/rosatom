@@ -16,7 +16,6 @@ import io.github.dvegasa.rosatom.features.main.curtask.CurTaskFragment
 import kotlinx.android.synthetic.main.fragment_boss.*
 import kotlinx.android.synthetic.main.fragment_worker.*
 import kotlinx.android.synthetic.main.fragment_worker.view.*
-import kotlinx.android.synthetic.main.item_shorttask.*
 
 class WorkerFragment : Fragment() {
 
@@ -41,11 +40,7 @@ class WorkerFragment : Fragment() {
         btnGo.setOnClickListener {
             // Открыть первый таск
             val frag = CurTaskFragment.newInstance(Gson().toJson(taskList!![0]))
-            childFragmentManager.commit {
-                setReorderingAllowed(true)
-                add(clRoot.id, frag)
-                addToBackStack(null)
-            }
+            frag.show(childFragmentManager, null)
         }
 
         listLoaded()

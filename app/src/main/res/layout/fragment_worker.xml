@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fff"
+        android:id="@+id/clRoot1"
         tools:context=".features.main.worker.WorkerFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,6 +70,7 @@
 
     <Button
             android:id="@+id/btnGo"
+            android:elevation="2dp"
             android:enabled="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
