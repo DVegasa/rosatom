@@ -40,7 +40,7 @@ interface YandexApi {
     }
 
     @Multipart
-    @POST("stt:recognize")
+    @POST("./stt:recognize")
     fun stt(
         @Part file: MultipartBody.Part,
         @Query("format") format: String = "oggopus",
