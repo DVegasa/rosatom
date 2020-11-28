@@ -148,19 +148,29 @@ class AtomVoiceFragment : Fragment() {
             file
         )
 
-        api.stt(
+        val callWav = api.stt(
             MultipartBody.Part.createFormData("file", file.name, body),
             format = "lpcm",
-            hz = 16000
-        ).enqueue(object : Callback<ResponseBody> {
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            hz = 48000
+        )
+
+        val callOgg = api.stt(
+            MultipartBody.Part.createFormData("file", file.name, body),
+            format = "oggopus"
+        )
+
+        callWav.enqueue(object : Callback<YandexStt> {
+            override fun onFailure(call: Call<YandexStt>, t: Throwable) {
                 Toast.makeText(context, "Failure", Toast.LENGTH_SHORT).show()
                 t.printStackTrace()
             }
 
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
-                Log.d("ed__", response.message())
+            override fun onResponse(call: Call<YandexStt>, response: Response<YandexStt>) {
+                Toast.makeText(context, "Response", Toast.LENGTH_SHORT).show()
+                Log.d("ed__ #response: ", response.message())
+                if (response.code() == 200) {
+                    tvStt.text = response.body()!!.result
+                }
             }
         })
     }

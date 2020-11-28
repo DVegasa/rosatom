@@ -1,12 +1,14 @@
 package io.github.dvegasa.rosatom.network
 
 import io.github.dvegasa.rosatom.Tokens
+import io.github.dvegasa.rosatom.features.main.boss.YandexStt
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by Ed Khalturin @DVegasa
@@ -17,6 +19,8 @@ interface YandexApi {
         fun create(): YandexApi {
 
             val client = OkHttpClient.Builder()
+
+            client.connectTimeout(20, TimeUnit.SECONDS)
 
             client.addInterceptor(HttpLoggingInterceptor().also {
                 it.level = HttpLoggingInterceptor.Level.BODY
@@ -46,5 +50,5 @@ interface YandexApi {
         @Query("format") format: String = "oggopus",
         @Query("sampleRateHertz") hz: Int = 48000,
         @Query("folderId") folderId: String = Tokens.catalog
-    ): Call<ResponseBody>
+    ): Call<YandexStt>
 }
