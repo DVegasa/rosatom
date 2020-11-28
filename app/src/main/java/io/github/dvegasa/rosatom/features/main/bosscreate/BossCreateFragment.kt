@@ -1,6 +1,10 @@
 package io.github.dvegasa.rosatom.features.main.bosscreate
 
+import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.app.Dialog
+import android.app.TimePickerDialog
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -9,8 +13,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.DatePicker
+import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import io.github.dvegasa.rosatom.R
+import kotlinx.android.synthetic.main.fragment_boss_create.*
 
 class BossCreateFragment : DialogFragment() {
 
@@ -37,6 +44,32 @@ class BossCreateFragment : DialogFragment() {
                     ViewGroup.LayoutParams.MATCH_PARENT
                 )
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
+    }
+
+    var hour: Int? = null
+    var min: Int? = null
+    var year: Int? = null
+    var month: Int? = null
+    var day: Int? = null
+    @SuppressLint("SetTextI18n")
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        tvChooseDateTime.setOnClickListener {
+            MyDatePicker(DatePickerDialog.OnDateSetListener { datePicker: DatePicker, y: Int, m: Int, d: Int ->
+                year = y
+                month = m
+                day = d
+
+                MyTimePicker(TimePickerDialog.OnTimeSetListener { timepicker, h, mi ->
+                    hour = h
+                    min = mi
+
+                    tvCaptionDeadline.visibility = View.VISIBLE
+                    tvChooseDateTime.text = "$day.$month.$year $hour:$min (изменить)"
+                }).show(childFragmentManager, null)
+            }).show(childFragmentManager, null)
+
         }
     }
 }

@@ -46,12 +46,11 @@
 
             <EditText
                     android:id="@+id/tvTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/circe_bold"
                     android:lineSpacingMultiplier="0.75"
-                    android:text="Проверить швы №13,54,52
-из детали №46"
+                    android:inputType="textMultiLine"
                     android:textColor="#000"
                     android:textSize="20sp" />
 
@@ -63,19 +62,24 @@
                     android:background="#ECECEC" />
 
             <TextView
+                    android:id="@+id/tvCaptionDeadline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/circe_medium"
-                    android:text="Выполнить до" />
+                    android:text="Выполнить до"
+                    android:visibility="gone"/>
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/circe_bold"
                     android:lineSpacingMultiplier="0.75"
-                    android:text="Сегодня, 15:30"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
+                    android:text="Выбрать дату и время сдачи"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/tvChooseDateTime"/>
 
             <FrameLayout
                     android:layout_width="match_parent"
@@ -91,11 +95,11 @@
                     android:text="Описание" />
 
             <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:inputType="textMultiLine"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/circe_medium"
                     android:lineSpacingMultiplier="0.9"
-                    android:text="Обрати особое внимание на красные вентили. Прошлый мастер говорил, что они не соотвествуют стандарту, проверь. Укажи это в отчёте, если так, мы тогда новые закажем"
                     android:textColor="#000"
                     android:textSize="15sp" />
 
