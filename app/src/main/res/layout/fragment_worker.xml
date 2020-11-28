@@ -62,7 +62,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llTopBar">
+            app:layout_constraintTop_toBottomOf="@id/llTopBar"
+            app:layout_constraintBottom_toTopOf="@id/btnGo">
 
     </androidx.recyclerview.widget.RecyclerView>
 

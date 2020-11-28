@@ -8,14 +8,25 @@ import android.view.ViewGroup
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import io.github.dvegasa.rosatom.R
 import io.github.dvegasa.rosatom.features.main.MainActivity
 import io.github.dvegasa.rosatom.features.main.boss.AtomVoiceFragment
+import io.github.dvegasa.rosatom.features.main.curtask.CurTaskFragment
 import kotlinx.android.synthetic.main.fragment_boss.*
 import kotlinx.android.synthetic.main.fragment_worker.*
 import kotlinx.android.synthetic.main.fragment_worker.view.*
+import kotlinx.android.synthetic.main.item_shorttask.*
 
 class WorkerFragment : Fragment() {
+
+    var taskList: ArrayList<Task>? = arrayListOf(
+        Task("Пройти плановый медосмотр", "Главный корпус", "9:00 — 10:30"),
+        Task("Работа за станком ТАКТА", "Цех №3", "11:00 — 14:30"),
+        Task("Проверка качества изделий №53", "Цех №3", "14:45 — 15:10"),
+        Task("Мониторинг работы нагревательного котла", "Цех №3", "15:25 — 17:30"),
+        Task("Сдача смены начальнику цеха", "Главный корпус", "17:50 — 18:00")
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,18 +37,25 @@ class WorkerFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val list = (requireActivity() as MainActivity).taskList!!
-
-        rvShortTasks.adapter = RvTasksAdapter(list)
-        rvShortTasks.layoutManager = LinearLayoutManager(requireContext())
-        tvTasksNumber.text = "${list.size} заданий"
 
         btnGo.setOnClickListener {
             // Открыть первый таск
+            val frag = CurTaskFragment.newInstance(Gson().toJson(taskList!![0]))
+            childFragmentManager.commit {
+                setReorderingAllowed(true)
+                add(clRoot.id, frag)
+                addToBackStack(null)
+            }
         }
+
+        listLoaded()
     }
 
     fun listLoaded() {
         btnGo.isEnabled = true
+        rvShortTasks.adapter = RvTasksAdapter(taskList!!)
+        rvShortTasks.layoutManager = LinearLayoutManager(requireContext())
+        tvTasksNumber.text = "${taskList!!.size} заданий"
     }
+
 }

@@ -5,19 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
+import com.google.gson.Gson
 import io.github.dvegasa.rosatom.R
 import io.github.dvegasa.rosatom.features.main.MainActivity
+import io.github.dvegasa.rosatom.features.main.worker.Task
 import kotlinx.android.synthetic.main.fragment_cur_task.*
 
 private const val ARG_PARAM1 = "param1"
 
-class CurTaskFragment : Fragment() {
-    private var pos: Int? = null
+class CurTaskFragment : DialogFragment() {
+    private var taskJsoned: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            pos = it.getInt(ARG_PARAM1)
+            taskJsoned = it.getString(ARG_PARAM1)
         }
     }
 
@@ -30,16 +33,16 @@ class CurTaskFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val task = (requireActivity() as MainActivity).taskList!![this.pos!!]
+        val task = Gson().fromJson(taskJsoned, Task::class.java)
         tv.text = task.title
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(pos: Int) =
+        fun newInstance(taskJsoned: String) =
             CurTaskFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_PARAM1, pos)
+                    putString(ARG_PARAM1, taskJsoned)
                 }
             }
     }
