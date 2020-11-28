@@ -6,5 +6,6 @@ package io.github.dvegasa.rosatom.features.main.bosscreate
 data class Human (
     val name: String,
     val position: String,
-    val avaId: Int
+    val avaId: Int,
+    val id: Int
 )

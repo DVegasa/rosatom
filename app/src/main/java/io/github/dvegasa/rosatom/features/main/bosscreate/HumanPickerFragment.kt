@@ -37,12 +37,12 @@ class HumanPickerFragment(val cb: Callback) : DialogFragment() {
     }
 
     val humans = listOf(
-        Human("Халтурин Эдуард", "Старший наладчик оборудования", R.drawable.ava0),
-        Human("Штанько Никита", "Наладчик оборудования", R.drawable.ava1),
-        Human("Помидоркин Олег", "Сварщик 2 разряда", R.drawable.ava2),
-        Human("Ищенко Александр", "Сварщик 4 разряда", R.drawable.ava3),
-        Human("Лисицын Дмитрий", "Младший наладчик оборудования", R.drawable.ava4),
-        Human("Новеллин Анатолий", "Сварщик стажёр", R.drawable.ava5)
+        Human("Халтурин Эдуард", "Старший наладчик оборудования", R.drawable.ava0, 0),
+        Human("Штанько Никита", "Наладчик оборудования", R.drawable.ava1, 1),
+        Human("Помидоркин Олег", "Сварщик 2 разряда", R.drawable.ava2, 2),
+        Human("Ищенко Александр", "Сварщик 4 разряда", R.drawable.ava3, 3),
+        Human("Лисицын Дмитрий", "Младший наладчик оборудования", R.drawable.ava4, 4),
+        Human("Новеллин Анатолий", "Сварщик стажёр", R.drawable.ava5, 5)
     )
 
 }

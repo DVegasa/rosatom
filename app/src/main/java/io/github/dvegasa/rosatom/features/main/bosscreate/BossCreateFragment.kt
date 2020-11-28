@@ -8,6 +8,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +16,20 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.DatePicker
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import io.github.dvegasa.rosatom.R
+import io.github.dvegasa.rosatom.network.DanielApi
+import io.github.dvegasa.rosatom.network.Task
 import kotlinx.android.synthetic.main.fragment_boss_create.*
 import kotlinx.android.synthetic.main.fragment_file_picker.view.*
 import kotlinx.android.synthetic.main.item_file.view.*
 import kotlinx.android.synthetic.main.item_human.view.*
+import okhttp3.Response
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import java.util.Collections.list
 
 class BossCreateFragment : DialogFragment() {
 
@@ -100,6 +109,47 @@ class BossCreateFragment : DialogFragment() {
                     llHumans.addView(x)
                 }
             }).show(childFragmentManager, null)
+        }
+
+        btnCreateTask.setOnClickListener {
+            val api = DanielApi.create()
+
+            val workerIds = arrayListOf<Int>()
+            for (h in humanList) {
+                workerIds.add(h.id)
+            }
+
+            val linkeds = arrayListOf<String>()
+            for (f in filesList) {
+                linkeds.add(f)
+            }
+
+            val dline: String = ""
+
+            api.uploadTask(Task(
+                title = tvTitle.text.toString(),
+                desc = etDesc.text.toString(),
+                workerId = workerIds,
+                createdById = 10,
+                contractIds = emptyList(),
+                linked = linkeds,
+                deadline = dline
+            )).enqueue(object : Callback<ResponseBody> {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    Log.d("ed__", "failure")
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: retrofit2.Response<ResponseBody>
+                ) {
+                    Log.d("ed__", "ok")
+                    if (response.code() % 100 == 2) {
+                        Toast.makeText(requireContext(), "OK", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
         }
     }
 }
