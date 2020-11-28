@@ -67,13 +67,13 @@ class AtomVoiceFragment : Fragment() {
     private var recorder: MediaRecorder? = null
     private fun startRecording() {
         filename =
-            "${requireActivity().externalCacheDir!!.absolutePath}/mic${System.currentTimeMillis()}.3gp"
+            "${requireActivity().externalCacheDir!!.absolutePath}/mic${System.currentTimeMillis()}.mp4"
 
         recorder = MediaRecorder().apply {
             setAudioSource(MediaRecorder.AudioSource.MIC)
-            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
+            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
             setOutputFile(filename)
-            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
 
             try {
                 prepare()
@@ -91,27 +91,26 @@ class AtomVoiceFragment : Fragment() {
             release()
         }
         recorder = null
-        sendToYandex()
+        val cb = object : AudioConverter.Companion.Callback {
+            override fun onSuccess(file: File) {
+                Log.d("ed__", "converted to WAV: " + file.path)
+                Toast.makeText(
+                    context,
+                    "converted for Yandex Speech Kit: " + file.path,
+                    Toast.LENGTH_SHORT
+                ).show()
+                filename = file.path
+                sendToYandex()
+            }
 
-//        val cb = object : IConvertCallback {
-//            override fun onSuccess(convertedFile: File?) {
-//                Log.d("ed__", "converted to WAV: " + convertedFile!!.path)
-//                Toast.makeText(
-//                    context,
-//                    "converted to WAV: " + convertedFile.path,
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//                filename = convertedFile.path
-//            }
-//
-//            override fun onFailure(error: Exception?) {
-//                Log.d("ed__", "failure: ")
-//                error!!.printStackTrace()
-//                Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//
-//        AudioConverter.oggToWav(requireContext(), File(filename), cb)
+            override fun onFailure(e: Exception) {
+                Log.d("ed__", "failure: ")
+                e.printStackTrace()
+                Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        AudioConverter.toYandexType(requireContext(), File(filename), cb)
 
     }
 
@@ -150,7 +149,9 @@ class AtomVoiceFragment : Fragment() {
         )
 
         api.stt(
-            MultipartBody.Part.createFormData("file", file.name, body)
+            MultipartBody.Part.createFormData("file", file.name, body),
+            format = "lpcm",
+            hz = 16000
         ).enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Toast.makeText(context, "Failure", Toast.LENGTH_SHORT).show()
