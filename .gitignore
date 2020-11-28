@@ -99,3 +99,4 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 
+/app/src/main/java/io/github/dvegasa/rosatom/Tokens.kt
