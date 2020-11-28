@@ -50,7 +50,7 @@ class WorkerFragment : Fragment() {
         btnGo.isEnabled = true
         rvShortTasks.adapter = RvTasksAdapter(taskList!!)
         rvShortTasks.layoutManager = LinearLayoutManager(requireContext())
-        tvTasksNumber.text = "${taskList!!.size} заданий"
+        tvTasksNumber.text = "Сегодня будет ${taskList!!.size} задач"
     }
 
 }
