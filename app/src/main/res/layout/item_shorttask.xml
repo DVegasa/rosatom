@@ -58,6 +58,6 @@
             android:fontFamily="@font/gilroy_medium"
             android:text="9:00 — 10:00"
             android:textColor="#000"
-            android:textSize="22sp" />
+            android:textSize="18sp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

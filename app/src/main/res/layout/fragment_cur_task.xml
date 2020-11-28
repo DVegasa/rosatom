@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fff"
@@ -8,10 +10,183 @@
         android:focusable="true"
         tools:context=".features.main.curtask.CurTaskFragment">
 
-    <TextView
-            android:id="@+id/tv"
+    <LinearLayout
+            android:id="@+id/llMain"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:text="@string/hello_blank_fragment">
 
-</FrameLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/circe_bold"
+                android:text="Задача"
+                android:textColor="#000"
+                android:textSize="32sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+                android:id="@+id/llTaskMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_card_task"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Название"
+                    android:fontFamily="@font/circe_medium" />
+
+            <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/circe_bold"
+                    android:lineSpacingMultiplier="0.75"
+                    android:text="Проверить швы №13,54,52
+из детали №46"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#ECECEC" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Назначил"
+                    android:fontFamily="@font/circe_medium"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                <ImageView
+                        android:id="@+id/iv"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/face"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="12dp">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/circe_bold"
+                            android:lineSpacingMultiplier="0.75"
+                            android:text="Солоухина Екатерина Викторовна"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/circe_medium"
+                            android:lineSpacingMultiplier="0.75"
+                            android:text="Старший по здоровью персонала"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#ECECEC" />
+
+            <TextView
+                    android:fontFamily="@font/circe_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Выполнить до" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/circe_bold"
+                    android:lineSpacingMultiplier="0.75"
+                    android:text="Сегодня, 15:30"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#ECECEC" />
+
+            <TextView
+                    android:fontFamily="@font/circe_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Описание" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/circe_bold"
+                    android:lineSpacingMultiplier="0.85"
+                    android:text="Обрати особое внимание на красные вентили. Прошлый мастер говорил, что они не соотвествуют стандарту, проверь. Укажи это в отчёте, если так, мы тогда новые закажем"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#ECECEC" />
+
+            <TextView
+                    android:fontFamily="@font/circe_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Файлы" />
+
+            <LinearLayout
+                    android:id="@+id/llFiles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/circe_bold"
+                        android:lineSpacingMultiplier="0.85"
+                        android:text="Обрати особое внимание на красные вентили. Прошлый мастер говорил, что они не соотвествуют стандарту, проверь. Укажи это в отчёте, если так, мы тогда новые закажем"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

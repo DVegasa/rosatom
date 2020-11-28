@@ -151,7 +151,7 @@ class AtomVoiceFragment : Fragment() {
         val callWav = api.stt(
             MultipartBody.Part.createFormData("file", file.name, body),
             format = "lpcm",
-            hz = 48000
+            hz = 16000
         )
 
         val callOgg = api.stt(

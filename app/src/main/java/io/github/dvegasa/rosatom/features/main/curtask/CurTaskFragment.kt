@@ -56,7 +56,6 @@ class CurTaskFragment : DialogFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val task = Gson().fromJson(taskJsoned, Task::class.java)
-        tv.text = task.title
     }
 
     companion object {

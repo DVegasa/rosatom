@@ -25,7 +25,7 @@ class AudioConverter {
             val commandWav = "-i ${file.path} -ac 1 -f wav ${newFile.path}"
 //                "-i ${file.path} -acodec copy -ar 48000 -f s16le -y -ac 1 ${newFile.path}"
 
-            val pickedCommand = commandWav
+            val pickedCommand = "-i ${file.path} -f s16le -acodec pcm_s16le -ar 16000 ${newFile.path}"
 
             Log.d("ed__", "command: $pickedCommand")
             val executionId: Long = FFmpeg.executeAsync(
