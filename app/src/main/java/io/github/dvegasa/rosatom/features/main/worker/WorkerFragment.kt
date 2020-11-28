@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import io.github.dvegasa.rosatom.R
+import io.github.dvegasa.rosatom.features.main.boss.AtomVoiceFragment
+import kotlinx.android.synthetic.main.fragment_boss.*
 
 class WorkerFragment : Fragment() {
 
@@ -16,5 +20,6 @@ class WorkerFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_worker, container, false)
     }
+
 
 }

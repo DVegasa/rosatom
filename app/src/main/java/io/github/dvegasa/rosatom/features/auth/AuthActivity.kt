@@ -20,11 +20,13 @@ class AuthActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("username", "dvegasa")
                     startActivity(intent)
+                    finish()
                 }
                 username.toLowerCase() == "nikita" -> {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("username", "nikita")
                     startActivity(intent)
+                    finish()
                 }
                 else -> Toast.makeText(this, "Данные не заполнены", Toast.LENGTH_SHORT).show()
             }

@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             if (username == "dvegasa") {
-                add<WorkerFragment>(flRoot.id)
-            } else {
                 add<BossFragment>(flRoot.id)
+            } else {
+                add<WorkerFragment>(flRoot.id)
             }
         }
     }
