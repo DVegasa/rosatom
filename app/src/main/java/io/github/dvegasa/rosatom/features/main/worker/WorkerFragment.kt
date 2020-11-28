@@ -26,7 +26,6 @@ class WorkerFragment : Fragment() {
         Task("Мониторинг работы нагревательного котла", "Цех №3", "15:25 — 17:30"),
         Task("Сдача смены начальнику цеха", "Главный корпус", "17:50 — 18:00")
     )
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
