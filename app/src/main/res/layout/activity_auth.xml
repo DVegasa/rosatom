@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_medium"
                 android:hint="Логин"
-                android:text="nikita"
+                android:text="dvegasa"
                 android:textSize="20sp" />
 
         <EditText

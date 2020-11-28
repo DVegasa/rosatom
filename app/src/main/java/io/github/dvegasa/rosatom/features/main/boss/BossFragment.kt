@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import io.github.dvegasa.rosatom.R
+import io.github.dvegasa.rosatom.features.main.bosscreate.BossCreateFragment
 import kotlinx.android.synthetic.main.fragment_boss.*
 
 class BossFragment : Fragment() {
@@ -21,9 +22,13 @@ class BossFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        childFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<AtomVoiceFragment>(flVoiceContainer.id)
+//        childFragmentManager.commit {
+//            setReorderingAllowed(true)
+//            add<AtomVoiceFragment>(flVoiceContainer.id)
+//        }
+
+        btnCreateTask.setOnClickListener {
+            BossCreateFragment().show(childFragmentManager, null)
         }
     }
 }
