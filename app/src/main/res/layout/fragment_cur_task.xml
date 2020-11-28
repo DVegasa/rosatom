@@ -31,19 +31,19 @@
         <LinearLayout
                 android:id="@+id/llTaskMain"
                 android:layout_width="match_parent"
-                tools:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_card_task"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="10dp"
+                tools:visibility="gone">
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Название"
-                    android:fontFamily="@font/circe_medium" />
+                    android:fontFamily="@font/circe_medium"
+                    android:text="Название" />
 
             <TextView
                     android:id="@+id/tvTitle"
@@ -66,8 +66,8 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Назначил"
-                    android:fontFamily="@font/circe_medium"/>
+                    android:fontFamily="@font/circe_medium"
+                    android:text="Назначил" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -86,11 +86,11 @@
                 <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/iv"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginStart="12dp">
+                        app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -121,9 +121,9 @@
                     android:background="#ECECEC" />
 
             <TextView
-                    android:fontFamily="@font/circe_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/circe_medium"
                     android:text="Выполнить до" />
 
             <TextView
@@ -143,9 +143,9 @@
                     android:background="#ECECEC" />
 
             <TextView
-                    android:fontFamily="@font/circe_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/circe_medium"
                     android:text="Описание" />
 
             <TextView
@@ -165,16 +165,16 @@
                     android:background="#ECECEC" />
 
             <TextView
-                    android:fontFamily="@font/circe_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/circe_medium"
                     android:text="Файлы" />
 
             <LinearLayout
                     android:id="@+id/llFiles"
-                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
 
                 <TextView
                         android:layout_width="wrap_content"
@@ -199,6 +199,96 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="12dp">
+
+            <FrameLayout
+                    android:id="@+id/frameLayout"
+                    android:layout_width="42dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/bg_redlight"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:fontFamily="@font/circe_bold"
+                    android:text="Ознакомление с задачей"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/frameLayout"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/ic_mark"
+                    app:layout_constraintStart_toStartOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/circe_medium"
+                    android:text="Выполнено"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="12dp">
+
+            <FrameLayout
+                    android:id="@+id/frameLayout1"
+                    android:layout_width="42dp"
+                    android:layout_height="220dp"
+                    android:background="@drawable/bg_bluelightlight"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+                        android:id="@+id/frameLayout2"
+                        android:layout_width="42dp"
+                        android:layout_height="75dp"
+                        android:background="@drawable/bg_bluelight"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+            </FrameLayout>
+
+            <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:fontFamily="@font/circe_bold"
+                    android:text="Работа"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/frameLayout1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
 </ScrollView>
