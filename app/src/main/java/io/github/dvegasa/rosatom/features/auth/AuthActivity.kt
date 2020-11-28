@@ -1,10 +1,10 @@
-package io.github.dvegasa.rosatom.features
+package io.github.dvegasa.rosatom.features.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import io.github.dvegasa.rosatom.MainActivity
+import io.github.dvegasa.rosatom.features.main.MainActivity
 import io.github.dvegasa.rosatom.R
 import kotlinx.android.synthetic.main.activity_auth.*
 
