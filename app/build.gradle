@@ -5,6 +5,12 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
 
+    repositories {
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+
     defaultConfig {
         applicationId "io.github.dvegasa.rosatom"
         minSdkVersion 21
@@ -46,4 +52,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
     implementation "androidx.fragment:fragment-ktx:1.2.5"
+    implementation 'com.github.adrielcafe:AndroidAudioConverter:0.0.8'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
 }
