@@ -42,7 +42,7 @@ interface YandexApi {
     @Multipart
     @POST("stt:recognize")
     fun stt(
-        @Part file: RequestBody,
+        @Part file: MultipartBody.Part,
         @Query("format") format: String = "oggopus",
         @Query("sampleRateHertz") hz: Int = 48000,
         @Query("folderId") folderId: String = Tokens.catalog

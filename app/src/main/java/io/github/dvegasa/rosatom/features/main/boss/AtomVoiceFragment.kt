@@ -2,21 +2,20 @@ package io.github.dvegasa.rosatom.features.main.boss
 
 import android.media.MediaPlayer
 import android.media.MediaRecorder
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.MimeTypeMap
 import android.widget.Toast
-import androidx.core.net.toUri
-import cafe.adriel.androidaudioconverter.AndroidAudioConverter
-import cafe.adriel.androidaudioconverter.callback.IConvertCallback
-import cafe.adriel.androidaudioconverter.model.AudioFormat
+import androidx.fragment.app.Fragment
 import io.github.dvegasa.rosatom.R
 import io.github.dvegasa.rosatom.network.YandexApi
 import kotlinx.android.synthetic.main.fragment_atom_voice.*
 import okhttp3.MediaType
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -24,7 +23,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 import java.io.IOException
-import java.lang.Exception
 
 class AtomVoiceFragment : Fragment() {
 
@@ -140,12 +138,20 @@ class AtomVoiceFragment : Fragment() {
     private fun sendToYandex() {
         val api = YandexApi.create()
         val file = File(filename)
+        val ctx = requireContext()
+        val contentResolver = ctx.contentResolver
+        val uri = Uri.fromFile(file)
+        // val type: String = contentResolver.getType(uri)
+        Log.d("ed__", "MIME type: ${MediaType.get(getMimeType(uri.toString()))}")
+
         val body = RequestBody.create(
-            MediaType.parse(requireContext().contentResolver.getType(file.toUri())!!),
+            MediaType.get(getMimeType(uri.toString())),
             file
         )
 
-        api.stt(body).enqueue(object : Callback<ResponseBody> {
+        api.stt(
+            MultipartBody.Part.createFormData("file", file.name, body)
+        ).enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Toast.makeText(context, "Failure", Toast.LENGTH_SHORT).show()
                 t.printStackTrace()
@@ -156,5 +162,12 @@ class AtomVoiceFragment : Fragment() {
                 Log.d("ed__", response.message())
             }
         })
+    }
+
+    fun getMimeType(url: String?): String {
+        var type: String? = null
+        val extension: String = MimeTypeMap.getFileExtensionFromUrl(url)
+        type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension)
+        return type!!
     }
 }
