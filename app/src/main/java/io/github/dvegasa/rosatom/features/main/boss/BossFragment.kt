@@ -22,10 +22,10 @@ class BossFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        childFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<AtomVoiceFragment>(flVoiceContainer.id)
-        }
+//        childFragmentManager.commit {
+//            setReorderingAllowed(true)
+//            add<AtomVoiceFragment>(flVoiceContainer.id)
+//        }
 
         btnCreateTask.setOnClickListener {
             BossCreateFragment().show(childFragmentManager, null)

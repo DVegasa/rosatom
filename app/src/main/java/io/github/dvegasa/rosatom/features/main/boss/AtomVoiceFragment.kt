@@ -36,6 +36,8 @@ class AtomVoiceFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
+        recorder?.stop()
+        recorder?.reset()
         recorder?.release()
         recorder = null
         player?.release()
@@ -88,6 +90,7 @@ class AtomVoiceFragment : Fragment() {
     private fun stopRecording() {
         recorder?.apply {
             stop()
+            reset()
             release()
         }
         recorder = null

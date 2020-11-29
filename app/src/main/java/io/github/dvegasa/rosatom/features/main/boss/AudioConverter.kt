@@ -28,26 +28,43 @@ class AudioConverter {
             val pickedCommand = "-i ${file.path} -f s16le -acodec pcm_s16le -ar 16000 ${newFile.path}"
 
             Log.d("ed__", "command: $pickedCommand")
-            val executionId: Long = FFmpeg.executeAsync(
-                pickedCommand
-            ) { _, returnCode ->
-                when (returnCode) {
-                    RETURN_CODE_SUCCESS -> {
-                        Log.i("ed__", "Async command execution completed successfully.")
-                        Toast.makeText(context, "FFMPEG: OK", Toast.LENGTH_SHORT).show()
-                        callback.onSuccess(newFile)
-                    }
-                    RETURN_CODE_CANCEL -> {
-                        Log.i("ed__", "Async command execution cancelled by user.")
-                        Toast.makeText(context, "FFMPEG: failure :(", Toast.LENGTH_SHORT).show()
-                        callback.onFailure(Exception(returnCode.toString()))
-                    }
-                    else -> {
-                        Log.i("ed__", "Async command execution failed with returnCode=$returnCode")
-                        Toast.makeText(context, "FFMPEG: failure :(", Toast.LENGTH_SHORT).show()
-                    }
+            val returnCode = FFmpeg.execute(pickedCommand)
+            when (returnCode) {
+                RETURN_CODE_SUCCESS -> {
+                    Log.i("ed__", "Async command execution completed successfully.")
+                    Toast.makeText(context, "FFMPEG: OK", Toast.LENGTH_SHORT).show()
+                    callback.onSuccess(newFile)
+                }
+                RETURN_CODE_CANCEL -> {
+                    Log.i("ed__", "Async command execution cancelled by user.")
+                    Toast.makeText(context, "FFMPEG: failure :(", Toast.LENGTH_SHORT).show()
+                    callback.onFailure(Exception(returnCode.toString()))
+                }
+                else -> {
+                    Log.i("ed__", "Async command execution failed with returnCode=$returnCode")
+                    Toast.makeText(context, "FFMPEG: failure :(", Toast.LENGTH_SHORT).show()
                 }
             }
+//            val executionId: Long = FFmpeg.executeAsync(
+//                pickedCommand
+//            ) { _, returnCode ->
+//                when (returnCode) {
+//                    RETURN_CODE_SUCCESS -> {
+//                        Log.i("ed__", "Async command execution completed successfully.")
+//                        Toast.makeText(context, "FFMPEG: OK", Toast.LENGTH_SHORT).show()
+//                        callback.onSuccess(newFile)
+//                    }
+//                    RETURN_CODE_CANCEL -> {
+//                        Log.i("ed__", "Async command execution cancelled by user.")
+//                        Toast.makeText(context, "FFMPEG: failure :(", Toast.LENGTH_SHORT).show()
+//                        callback.onFailure(Exception(returnCode.toString()))
+//                    }
+//                    else -> {
+//                        Log.i("ed__", "Async command execution failed with returnCode=$returnCode")
+//                        Toast.makeText(context, "FFMPEG: failure :(", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            }
 
         }
 
