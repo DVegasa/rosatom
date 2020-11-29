@@ -67,13 +67,13 @@ class AtomVoiceFragment : Fragment() {
     private var recorder: MediaRecorder? = null
     private fun startRecording() {
         filename =
-            "${requireActivity().externalCacheDir!!.absolutePath}/mic${System.currentTimeMillis()}.mp4"
+            "${requireActivity().externalCacheDir!!.absolutePath}/mic${System.currentTimeMillis()}.3gp"
 
         recorder = MediaRecorder().apply {
             setAudioSource(MediaRecorder.AudioSource.MIC)
-            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
             setOutputFile(filename)
-            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
 
             try {
                 prepare()
