@@ -198,96 +198,120 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="12dp">
-
-            <FrameLayout
-                    android:id="@+id/frameLayout"
-                    android:layout_width="42dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/bg_redlight"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+            <ImageView
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_mark"
+                    android:layout_gravity="center"/>
 
             <TextView
                     android:id="@+id/textView"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
-                    android:fontFamily="@font/circe_bold"
-                    android:text="Ознакомление с задачей"
-                    android:textColor="#000"
+                    android:fontFamily="@font/circe_medium"
+                    android:text="Ознакомиться с ГОСТом"
+                    android:textColor="#51000000"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/frameLayout"
                     app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
-            <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:src="@drawable/ic_mark"
-                    app:layout_constraintStart_toStartOf="@+id/textView"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:fontFamily="@font/circe_medium"
-                    android:text="Выполнено"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
-                    app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="12dp">
-
-            <FrameLayout
-                    android:id="@+id/frameLayout1"
-                    android:layout_width="42dp"
-                    android:layout_height="220dp"
-                    android:background="@drawable/bg_bluelightlight"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                <FrameLayout
-                        android:id="@+id/frameLayout2"
-                        android:layout_width="42dp"
-                        android:layout_height="75dp"
-                        android:background="@drawable/bg_bluelight"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-            </FrameLayout>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+            <ImageView
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_circle_accent"
+                    android:layout_gravity="center"/>
 
             <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="0dp"
+                    android:layout_weight="9"
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
                     android:fontFamily="@font/circe_bold"
-                    android:text="Работа"
-                    android:textColor="#000"
+                    android:text="Войти в главный корпус"
+                    android:textColor="#000000"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/frameLayout1"
+                    app:layout_constraintStart_toEndOf="@+id/frameLayout"
                     app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+            <ImageView
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_circle"
+                    android:layout_gravity="center"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:fontFamily="@font/circe_medium"
+                    android:text="Подняться в 3-01 А"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/frameLayout"
+                    app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_marginBottom="24dp">
+            <ImageView
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_circle"
+                    android:layout_gravity="center"/>
+
+            <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:fontFamily="@font/circe_medium"
+                    android:text="Оставить отчёт о своём здоровье"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/frameLayout"
+                    app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>
