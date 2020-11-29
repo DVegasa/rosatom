@@ -36,4 +36,7 @@ interface DanielApi {
     @POST("task")
     fun uploadTask(@Body task: Task): Call<ResponseBody>
 
+    @GET("task")
+    fun getTasks(): Call<ArrayList<Task>>
+
 }

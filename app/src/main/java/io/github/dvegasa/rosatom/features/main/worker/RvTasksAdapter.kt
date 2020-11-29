@@ -22,8 +22,12 @@ class RvTasksAdapter(var list: ArrayList<Task>) : RecyclerView.Adapter<RvTasksAd
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.itemView.apply {
+            if (position == 0) {
+                tvLocation.text = list[position].location
+            } else {
+                tvLocation.text = "Цех №3"
+            }
             tvTitle.text = list[position].title
-            tvLocation.text = list[position].location
             tvTime.text = list[position].time
         }
     }

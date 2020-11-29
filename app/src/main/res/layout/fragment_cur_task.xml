@@ -51,8 +51,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/circe_bold"
                     android:lineSpacingMultiplier="0.75"
-                    android:text="Проверить швы №13,54,52
-из детали №46"
+                    android:text="Пройти плановый медосмотр"
                     android:textColor="#000"
                     android:textSize="20sp" />
 
@@ -74,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/iv"
                         android:layout_width="52dp"
                         android:layout_height="52dp"
@@ -131,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/circe_bold"
                     android:lineSpacingMultiplier="0.75"
-                    android:text="Сегодня, 15:30"
+                    android:text="Сегодня, 10:30"
                     android:textColor="#000"
                     android:textSize="18sp" />
 

@@ -155,8 +155,9 @@ class BossCreateFragment : DialogFragment() {
                     response: retrofit2.Response<ResponseBody>
                 ) {
                     Log.d("ed__", "ok")
-                    if (response.code() % 100 == 2) {
-                        Toast.makeText(requireContext(), "OK", Toast.LENGTH_SHORT).show()
+                    if (response.code() in 200..299) {
+                        Toast.makeText(requireContext(), "Отправлено", Toast.LENGTH_SHORT).show()
+                        dismiss()
                     }
                 }
             })
